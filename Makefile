@@ -15,6 +15,9 @@ init:
 apply: init
 	terraform apply -var=key_name=$(KEY_NAME) -var=your_public_ip=$$(curl -s https://api.ipify.org)
 
+destroy: init
+	terraform destroy -var=key_name=$(KEY_NAME) -var=your_public_ip=$$(curl -s https://api.ipify.org)
+
 push:
 	./push_container_image.sh $(CLUSTER_NAME) prometheus
 

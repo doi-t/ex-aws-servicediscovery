@@ -2,7 +2,7 @@
 
 Play with [Route53 Auto Naming](https://docs.aws.amazon.com/Route53/latest/APIReference/overview-service-discovery.html) and [ECS Service Discovery](https://aws.amazon.com/blogs/aws/amazon-ecs-service-discovery/) features.
 
-- TODO: Add Service Discovery
+# TODOs
 - Deploy Prometheus just for fun
     - (WIP) Make node-exporter available for Prometheus
     - (WIP) Use EBS as Prometheus's tsdb storage
@@ -20,6 +20,11 @@ make TF_S3_BUCKET=doi-t-tfstate KEY_NAME=playground apply
 ## Upload container images to ECR
 ```shell
 make push
+```
+
+## Cleanup
+```shell
+make TF_S3_BUCKET=doi-t-tfstate KEY_NAME=playground destroy
 ```
 
 # References
