@@ -1,0 +1,60 @@
+[
+  {
+    "name": "prometheus-server",
+    "image": "042234535815.dkr.ecr.ap-northeast-1.amazonaws.com/ex-r53-auto-naming-ecr-prometheus",
+    "essential": true,
+    "memory": 256,
+    "command": [
+      "--config.file=/etc/prometheus/prometheus.yaml",
+      "--storage.tsdb.path=/prometheus/",
+      "--web.enable-lifecycle",
+      "--storage.tsdb.retention=24h"
+    ],
+    "links": [
+      "alertmanager"
+    ],
+    "portMappings": [
+      {
+        "containerPort": 9090,
+        "hostPort": 9090,
+        "protocol": "tcp"
+      }
+    ],
+    "mountPoints": [
+        {
+            "sourceVolume": "prometheus-storage",
+            "containerPath": "/prometheus",
+            "readOnly": false
+        }
+    ],
+    "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+            "awslogs-group": "ex-r53-auto-naming-awslogs-ecs",
+            "awslogs-region": "ap-northeast-1",
+            "awslogs-stream-prefix": "prometheus-server"
+        }
+    }
+  },
+  {
+    "name": "alertmanager",
+    "image": "prom/alertmanager",
+    "essential": true,
+    "memory": 256,
+    "portMappings": [
+      {
+        "containerPort": 9093,
+        "hostPort": 9093,
+        "protocol": "tcp"
+      }
+    ],
+    "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+            "awslogs-group": "ex-r53-auto-naming-awslogs-ecs",
+            "awslogs-region": "ap-northeast-1",
+            "awslogs-stream-prefix": "alertmanager"
+        }
+    }
+  }
+]
