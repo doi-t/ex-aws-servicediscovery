@@ -4,6 +4,17 @@ resource "aws_ecs_service" "node_exporter_daemon" {
   cluster             = "${aws_ecs_cluster.ecs_cluster.id}"
   task_definition     = "${aws_ecs_task_definition.ecs_node_exporter_daemon.arn}"
   scheduling_strategy = "DAEMON"
+
+  # NOTE: When specifying 'host' or 'bridge' for networkMode, values for 'containerName' and 'containerPort' must be specified from the task definition.
+  service_registries {
+    registry_arn = "${aws_service_discovery_service.node_exporter.arn}"
+
+    # The container name value that is already specified in the task definition
+    container_name = "node-exporter"
+
+    # The port value that is already specified in the task definition ()
+    container_port = "9100"
+  }
 }
 
 resource "aws_ecs_task_definition" "ecs_node_exporter_daemon" {
