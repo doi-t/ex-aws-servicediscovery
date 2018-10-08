@@ -3,7 +3,7 @@
     "name": "node-exporter",
     "image": "prom/node-exporter",
     "essential": true,
-    "memory": 256,
+    "memory": 128,
     "portMappings": [
       {
         "containerPort": 9100,

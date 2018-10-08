@@ -17,8 +17,12 @@ variable "cidr" {
   default = "10.40.0.0/16"
 }
 
-variable "public_subnet_cidr" {
+variable "public_subnet_cidr_1" {
   default = "10.40.1.0/24"
+}
+
+variable "public_subnet_cidr_2" {
+  default = "10.40.2.0/24"
 }
 
 variable "root_block_device_type" {
@@ -45,19 +49,19 @@ variable "health_check_grace_period" {
   default = "600"
 }
 
-variable "desired_task_count" {
+variable "prometheus_desired_task_count" {
   default = "1"
 }
 
-variable "desired_capacity" {
-  default = "1"
+variable "asg_max_size" {
+  default = "2"
 }
 
-variable "min_size" {
-  default = "1"
+variable "asg_desired_capacity" {
+  default = "2"
 }
 
-variable "max_size" {
+variable "asg_min_size" {
   default = "1"
 }
 

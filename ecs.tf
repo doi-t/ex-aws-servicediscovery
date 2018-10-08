@@ -86,10 +86,10 @@ resource "aws_autoscaling_group" "ecs_instance" {
 
   health_check_grace_period = "${var.health_check_grace_period}"
   health_check_type         = "EC2"
-  desired_capacity          = "${var.desired_capacity}"
   termination_policies      = ["OldestLaunchConfiguration", "Default"]
-  min_size                  = "${var.min_size}"
-  max_size                  = "${var.max_size}"
+  max_size                  = "${var.asg_max_size}"
+  desired_capacity          = "${var.asg_desired_capacity}"
+  min_size                  = "${var.asg_min_size}"
   enabled_metrics           = ["${var.enabled_metrics}"]
   vpc_zone_identifier       = ["${module.vpc.public_subnets}"]
 

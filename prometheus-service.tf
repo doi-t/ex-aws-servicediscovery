@@ -2,7 +2,7 @@ resource "aws_ecs_service" "prometheus_with_alertmanager" {
   name            = "prometheus-with-alertmanager"
   cluster         = "${aws_ecs_cluster.ecs_cluster.id}"
   task_definition = "${aws_ecs_task_definition.prometheus_with_alertmanager.arn}"
-  desired_count   = "${var.desired_task_count}"
+  desired_count   = "${var.prometheus_desired_task_count}"
 
   # This is necessary only when I use LB for ecs.
   # Ref. https://www.terraform.io/docs/providers/aws/r/ecs_service.html#iam_role
