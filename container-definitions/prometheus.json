@@ -40,7 +40,7 @@
     "name": "alertmanager",
     "image": "prom/alertmanager",
     "essential": true,
-    "memory": 256,
+    "memory": 128,
     "portMappings": [
       {
         "containerPort": 9093,

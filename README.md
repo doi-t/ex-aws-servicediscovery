@@ -3,11 +3,13 @@
 Play with [Route53 Auto Naming](https://docs.aws.amazon.com/Route53/latest/APIReference/overview-service-discovery.html) and [ECS Service Discovery](https://aws.amazon.com/blogs/aws/amazon-ecs-service-discovery/) features.
 
 # TODOs
-- Deploy Prometheus just for fun
-    - (WIP) Make node-exporter available for Prometheus
-    - (WIP) Use EBS as Prometheus's tsdb storage
-    - (WIP) Setup alertmanager properly
-- TODO: Use Spot Fleet
+- [x] Deploy Prometheus, node-exporter and alertmanager just for fun
+- [x] Use ECS Service Discovery as a Prometheus's DNS-based service discovery
+    - It supports SRV record query in [dns_sd_config](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#dns_sd_config)
+- [ ] Use [EBS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-ami-storage-config.html) as Prometheus's tsdb storage
+    - Relates?: [Data Volumes in Tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_data_volumes.html)
+- [ ] Setup alertmanager properly
+- [ ] Use Spot Fleet
 
 ## Preparation
 Create a S3 bucket for tfstate.

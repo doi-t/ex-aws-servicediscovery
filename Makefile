@@ -21,6 +21,8 @@ destroy: init
 push:
 	./push_container_image.sh $(CLUSTER_NAME) prometheus
 
-update-service: push
+update-prometheus: push
 	./update_service.sh $(CLUSTER_NAME) prometheus-with-alertmanager
+
+updaste-node-exporter:
 	./update_service.sh $(CLUSTER_NAME) node-exporter-daemon

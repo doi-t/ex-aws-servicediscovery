@@ -5,8 +5,8 @@ module "vpc" {
   name = "${var.resource_prefix}"
   cidr = "${var.cidr}"
 
-  azs            = ["${data.aws_region.current.name}a"]
-  public_subnets = ["${var.public_subnet_cidr}"]
+  azs            = ["${data.aws_region.current.name}a", "${data.aws_region.current.name}c"]
+  public_subnets = ["${var.public_subnet_cidr_1}", "${var.public_subnet_cidr_2}"]
 
   enable_dns_support               = true
   enable_dns_hostnames             = true
