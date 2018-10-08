@@ -1,4 +1,4 @@
-# ex-r53-auto-naming
+# ex-aws-servicediscovery
 
 Play with [Route53 Auto Naming](https://docs.aws.amazon.com/Route53/latest/APIReference/overview-service-discovery.html) and [ECS Service Discovery](https://aws.amazon.com/blogs/aws/amazon-ecs-service-discovery/) features.
 

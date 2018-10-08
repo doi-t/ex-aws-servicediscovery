@@ -14,7 +14,7 @@
     "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-            "awslogs-group": "ex-r53-auto-naming-awslogs-ecs",
+            "awslogs-group": "ex-aws-servicediscovery-awslogs-ecs",
             "awslogs-region": "ap-northeast-1",
             "awslogs-stream-prefix": "node-exporter"
         }

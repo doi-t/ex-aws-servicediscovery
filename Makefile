@@ -1,7 +1,7 @@
 TF_S3_BUCKET:=
 KEY_NAME:=
-CLUSTER_NAME:=ex-r53-auto-naming-ecs-cluster
-TF_BACKEND_KEY:=ex-r53-auto-naming/terraform.tfstate
+CLUSTER_NAME:=ex-aws-servicediscovery-ecs-cluster
+TF_BACKEND_KEY:=ex-aws-servicediscovery/terraform.tfstate
 TF_REGION:=ap-northeast-1
 
 .PHONY: init apply

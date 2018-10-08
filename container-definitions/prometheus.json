@@ -1,7 +1,7 @@
 [
   {
     "name": "prometheus-server",
-    "image": "042234535815.dkr.ecr.ap-northeast-1.amazonaws.com/ex-r53-auto-naming-ecr-prometheus",
+    "image": "042234535815.dkr.ecr.ap-northeast-1.amazonaws.com/ex-aws-servicediscovery-ecr-prometheus",
     "essential": true,
     "memory": 256,
     "command": [
@@ -30,7 +30,7 @@
     "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-            "awslogs-group": "ex-r53-auto-naming-awslogs-ecs",
+            "awslogs-group": "ex-aws-servicediscovery-awslogs-ecs",
             "awslogs-region": "ap-northeast-1",
             "awslogs-stream-prefix": "prometheus-server"
         }
@@ -51,7 +51,7 @@
     "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-            "awslogs-group": "ex-r53-auto-naming-awslogs-ecs",
+            "awslogs-group": "ex-aws-servicediscovery-awslogs-ecs",
             "awslogs-region": "ap-northeast-1",
             "awslogs-stream-prefix": "alertmanager"
         }
