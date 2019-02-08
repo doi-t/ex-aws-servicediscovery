@@ -6,11 +6,11 @@ variable "ami_owners" {
 }
 
 variable "resource_prefix" {
-  default = "ex-r53-auto-naming"
+  default = "ex-aws-servicediscovery"
 }
 
 variable "s3_bucket_name" {
-  default = "ex-r53-auto-naming"
+  default = "ex-aws-servicediscovery"
 }
 
 variable "cidr" {
@@ -44,6 +44,7 @@ variable "cpu_credit_specification" {
 
 variable "key_name" {}
 variable "your_public_ip" {}
+variable "your_public_domain_for_service_discovery" {}
 
 variable "health_check_grace_period" {
   default = "600"

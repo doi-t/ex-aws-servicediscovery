@@ -22,4 +22,4 @@ scrape_configs:
   - job_name: 'node-exprter'
     dns_sd_configs:
       - names:
-        - node-exporter.ex-r53-auto-naming.ecs-service-discovery.local
+        - node-exporter.ex-aws-servicediscovery.ecs-service-discovery.local
