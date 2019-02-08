@@ -6,9 +6,9 @@ Play with [Route53 Auto Naming](https://docs.aws.amazon.com/Route53/latest/APIRe
 - [x] Deploy Prometheus, node-exporter and alertmanager just for fun
 - [x] Use ECS Service Discovery as a Prometheus's DNS-based service discovery
     - It supports SRV record query in [dns_sd_config](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#dns_sd_config)
+- [x] Use EBS with [Docker Volumes](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-volumes.html) as Prometheus's tsdb storage
+    - Ref. [Data Volumes in Tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_data_volumes.html)
 - [ ] Establish a DNS based Load Balancer in public with [a public DNS namespace](https://aws.amazon.com/premiumsupport/knowledge-center/service-discovery-route53-auto-naming/)
-- [ ] Use [EBS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-ami-storage-config.html) as Prometheus's tsdb storage
-    - Relates?: [Data Volumes in Tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_data_volumes.html)
 - [ ] Setup alertmanager properly
 - [ ] Use Spot Fleet
 
