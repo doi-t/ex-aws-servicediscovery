@@ -40,7 +40,9 @@ resource "aws_ecs_task_definition" "prometheus_with_alertmanager" {
 
     # TODO: Make sure the spec: https://www.terraform.io/docs/providers/aws/r/ecs_task_definition.html#docker-volume-configuration-arguments
     docker_volume_configuration {
-      scope = "task"
+      scope         = "shared" # Docker volumes that are scoped as shared persist after the task stops.
+      autoprovision = true
+      driver        = "local"
 
       labels {
         Name = "prometheus-tsdb-storage"
