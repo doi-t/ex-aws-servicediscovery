@@ -1,0 +1,29 @@
+[
+  {
+    "name": "${name}",
+    "image": "${image}",
+    "essential": true,
+    "memory": ${memory},
+    "command": [
+    ],
+    "links": [
+    ],
+    "portMappings": [
+      {
+        "containerPort": ${port},
+        "hostPort": ${port},
+        "protocol": "tcp"
+      }
+    ],
+    "mountPoints": [
+    ],
+    "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+            "awslogs-group": "${awslogs_group}",
+            "awslogs-region": "${region}",
+            "awslogs-stream-prefix": "${name}"
+        }
+    }
+  }
+]

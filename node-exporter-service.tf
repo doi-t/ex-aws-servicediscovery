@@ -1,4 +1,3 @@
-# FIXME: prometheus can not talk to node-exporter now.
 resource "aws_ecs_service" "node_exporter_daemon" {
   name                = "node-exporter-daemon"
   cluster             = "${aws_ecs_cluster.ecs_cluster.id}"
@@ -12,7 +11,7 @@ resource "aws_ecs_service" "node_exporter_daemon" {
     # The container name value that is already specified in the task definition
     container_name = "node-exporter"
 
-    # The port value that is already specified in the task definition ()
+    # The port value that is already specified in the task definition
     container_port = "9100"
   }
 }

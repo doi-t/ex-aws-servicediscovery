@@ -1,6 +1,6 @@
 # ex-aws-servicediscovery
 
-Play with [Route53 Auto Naming](https://docs.aws.amazon.com/Route53/latest/APIReference/overview-service-discovery.html) and [ECS Service Discovery](https://aws.amazon.com/blogs/aws/amazon-ecs-service-discovery/) features.
+Play with [AWS Cloud Map](https://docs.aws.amazon.com/cloud-map/latest/dg/what-is-cloud-map.html) and [ECS Service Discovery](https://aws.amazon.com/blogs/aws/amazon-ecs-service-discovery/) features.
 
 # TODOs
 - [x] Deploy Prometheus, node-exporter and alertmanager just for fun
@@ -8,8 +8,9 @@ Play with [Route53 Auto Naming](https://docs.aws.amazon.com/Route53/latest/APIRe
     - It supports SRV record query in [dns_sd_config](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#dns_sd_config)
 - [x] Use EBS with [Docker Volumes](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-volumes.html) as Prometheus's tsdb storage
     - Ref. [Data Volumes in Tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_data_volumes.html)
-- [ ] Establish a DNS based Load Balancer in public with [a public DNS namespace](https://aws.amazon.com/premiumsupport/knowledge-center/service-discovery-route53-auto-naming/)
-- [ ] Setup alertmanager properly
+- [ ] Alertmanager
+- [ ] Grafana
+- [ ] cAdvisor
 - [ ] Use Spot Fleet
 
 ## Preparation
@@ -23,6 +24,12 @@ make TF_S3_BUCKET=<your_s3_bucket_name> KEY_NAME=<your_key_pair_name> YOUR_PUBLI
 ## Upload container images to ECR
 ```shell
 make push
+```
+
+### push example code
+Run an example in https://github.com/prometheus-up-and-running/examples (Python only).
+```
+export EXAMPLE_CODE=up-and-running-examples/4/4-1-wsgi.py; make push-example
 ```
 
 ## Cleanup
@@ -44,3 +51,10 @@ Currently you need to register/deregister an instance to/from a public namespace
 > - The DNS records created for a service discovery service will always register with the private IP address for the task, rather than the public IP address, even when public namespaces are used.
 >
 > Ref. https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html#service-discovery-considerations
+
+## Understanding Prometheus's TSDB
+```
+$ ssh -i <your key pair's pem file path> ec2-user@<instance public ip which Prometheus container is running on>
+[ec2] $ docker volume inspect prometheus-storage
+[ec2] $ docker exec -it $(docker ps | grep prometheus-server | awk '{ print $1 }') /bin/sh
+```

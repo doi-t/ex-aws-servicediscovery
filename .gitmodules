@@ -1,0 +1,4 @@
+[submodule "up-and-running-examples"]
+	path = up-and-running-examples
+	url = https://github.com/prometheus-up-and-running/examples
+	branch = master
