@@ -4,7 +4,7 @@ resource "aws_ecs_service" "prometheus_with_alertmanager" {
   task_definition = "${aws_ecs_task_definition.prometheus_with_alertmanager.arn}"
   desired_count   = "${var.prometheus_desired_task_count}"
 
-  # This is necessary only when I use LB for ecs.
+  # This is necessary when I use LB for ecs.
   # Ref. https://www.terraform.io/docs/providers/aws/r/ecs_service.html#iam_role
   # iam_role        = "${aws_iam_role.ecs_service.arn}"
   # depends_on      = ["aws_iam_role_policy_attachment.ecs_service"]
@@ -16,7 +16,7 @@ resource "aws_ecs_service" "prometheus_with_alertmanager" {
     # The container name value that is already specified in the task definition
     container_name = "prometheus-server"
 
-    # The port value that is already specified in the task definition ()
+    # The port value that is already specified in the task definition
     container_port = "9090"
   }
   ordered_placement_strategy {
@@ -58,5 +58,5 @@ resource "aws_ecs_task_definition" "prometheus_with_alertmanager" {
 }
 
 resource "aws_ecr_repository" "ecr_prometheus" {
-  name = "${var.resource_prefix}-ecr-prometheus"
+  name = "${var.resource_prefix}-prometheus"
 }

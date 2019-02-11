@@ -28,6 +28,9 @@ destroy: init
 push:
 	./push_container_image.sh $(CLUSTER_NAME) prometheus
 
+push-example:
+	./push_container_image.sh $(CLUSTER_NAME) example-worker
+
 update-prometheus: push
 	./update_service.sh $(CLUSTER_NAME) prometheus-with-alertmanager
 

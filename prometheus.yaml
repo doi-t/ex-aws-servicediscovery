@@ -23,3 +23,8 @@ scrape_configs:
     dns_sd_configs:
       - names:
         - node-exporter.ex-aws-servicediscovery.ecs-service-discovery.local
+
+  - job_name: 'example-worker'
+    dns_sd_configs:
+      - names:
+        - example-worker.ex-aws-servicediscovery.ecs-service-discovery.local
