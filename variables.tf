@@ -50,10 +50,6 @@ variable "health_check_grace_period" {
   default = "600"
 }
 
-variable "prometheus_desired_task_count" {
-  default = "1"
-}
-
 variable "asg_max_size" {
   default = "2"
 }

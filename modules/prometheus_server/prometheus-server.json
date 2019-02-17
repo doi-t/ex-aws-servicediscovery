@@ -1,9 +1,9 @@
 [
   {
-    "name": "prometheus-server",
-    "image": "042234535815.dkr.ecr.ap-northeast-1.amazonaws.com/ex-aws-servicediscovery-prometheus",
+    "name": "${name}",
+    "image": "${image}",
     "essential": true,
-    "memory": 256,
+    "memory": ${prometheus_memory},
     "command": [
       "--config.file=/etc/prometheus/prometheus.yaml",
       "--storage.tsdb.path=/prometheus/",
@@ -15,8 +15,8 @@
     ],
     "portMappings": [
       {
-        "containerPort": 9090,
-        "hostPort": 9090,
+        "containerPort": ${prometheus_port},
+        "hostPort": ${prometheus_port},
         "protocol": "tcp"
       }
     ],
@@ -30,9 +30,9 @@
     "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-            "awslogs-group": "ex-aws-servicediscovery-awslogs-ecs",
-            "awslogs-region": "ap-northeast-1",
-            "awslogs-stream-prefix": "prometheus-server"
+            "awslogs-group": "${awslogs_group}",
+            "awslogs-region": "${region}",
+            "awslogs-stream-prefix": "${name}"
         }
     }
   },
@@ -40,19 +40,19 @@
     "name": "alertmanager",
     "image": "prom/alertmanager",
     "essential": true,
-    "memory": 128,
+    "memory": ${alertmanager_memory},
     "portMappings": [
       {
-        "containerPort": 9093,
-        "hostPort": 9093,
+        "containerPort": ${alertmanager_port},
+        "hostPort": ${alertmanager_port},
         "protocol": "tcp"
       }
     ],
     "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-            "awslogs-group": "ex-aws-servicediscovery-awslogs-ecs",
-            "awslogs-region": "ap-northeast-1",
+            "awslogs-group": "${awslogs_group}",
+            "awslogs-region": "${region}",
             "awslogs-stream-prefix": "alertmanager"
         }
     }

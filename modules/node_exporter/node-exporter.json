@@ -1,0 +1,23 @@
+[
+  {
+    "name": "${name}",
+    "image": "prom/node-exporter",
+    "essential": true,
+    "memory": ${memory},
+    "portMappings": [
+      {
+        "containerPort": ${port},
+        "hostPort": ${port},
+        "protocol": "tcp"
+      }
+    ],
+    "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+            "awslogs-group": "${awslogs_group}",
+            "awslogs-region": "${region}",
+            "awslogs-stream-prefix": "${name}"
+        }
+    }
+  }
+]
